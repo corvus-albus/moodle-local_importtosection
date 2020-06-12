@@ -33,7 +33,7 @@ defined('MOODLE_INTERNAL') || die();
  */
 function local_importtosection_extend_navigation_course($navigation, $course, $context) {
     if (has_capability('moodle/backup:backupcourse', $context)) {
-        $url = new moodle_url('/local/importtosection/importtosection.php', array('id' => $course->id));
+        $url = new moodle_url('/local/importtosection/index.php', array('id' => $course->id));
         $navigation->add(get_string('import2section', 'local_importtosection'), $url,
                 navigation_node::TYPE_SETTING, null, null, new pix_icon('i/import', ''));
     }
