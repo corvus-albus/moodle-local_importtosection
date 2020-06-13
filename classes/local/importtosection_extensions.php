@@ -21,7 +21,6 @@
  *
  * @package   local_importtosection
  * @copyright 2020 corvus albus
- * @copyright based on work by Sam Hemelryk 2010
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
@@ -30,7 +29,6 @@
  *
  * @package   local_importtosection
  * @copyright 2020 corvus albus
- * @copyright based on work by Sam Hemelryk 2010
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 class importtosection_ui extends import_ui {
