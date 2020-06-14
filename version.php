@@ -28,4 +28,4 @@ $plugin->component = 'local_importtosection';
 $plugin->maturity  = MATURITY_STABLE;
 $plugin->release   = 'v0.9.1';
 $plugin->requires  = 2018120300;
-$plugin->version   = 2020061400;
+$plugin->version   = 2020061401;
