@@ -16,7 +16,7 @@
 
 /**
  * Configuring and executing process for local_importtosection.
- * 
+ *
  * This script is used to configure and execute the import proccessto a section.
  * It is based on the /backup/import.php
  *

@@ -1,187 +1,250 @@
 .path-local-importtosection .backup_progress .backup_stage {
-  color: #868e96 !important; }
+    color: #868e96; /*!important; */
+}
 
-.path-mod-forum .nested-v2-display-mode .path-local-importtosection .backup_progress .backup_stage, .path-local-importtosection .backup_progress .path-mod-forum .nested-v2-display-mode .backup_stage,
+.path-mod-forum .nested-v2-display-mode .path-local-importtosection .backup_progress .backup_stage,
+.path-local-importtosection .backup_progress .path-mod-forum .nested-v2-display-mode .backup_stage,
 .path-mod-forum.nested-v2-display-mode .path-local-importtosection .backup_progress .backup_stage,
 .path-local-importtosection .backup_progress .path-mod-forum.nested-v2-display-mode .backup_stage {
-color: #707070 !important;
-/* stylelint-disable-line declaration-no-important */ }
+    color: #707070; /*!important;*/
+    /* stylelint-disable-line declaration-no-important */ 
+}
 
 .path-local-importtosection .mform {
-  /* These are long labels with checkboxes on the right. */ }
-  .path-local-importtosection .mform .grouped_settings {
+    /* These are long labels with checkboxes on the right. */ 
+}
+.path-local-importtosection .mform .grouped_settings {
     clear: both;
     overflow: hidden;
-    /* Use card styles but avoid extend because that brings in too much. */ }
-    .path-local-importtosection .mform .grouped_settings.section_level {
-      background-color: #fff;
-      border-radius: 0.25rem;
-      border: 1px solid rgba(0, 0, 0, 0.125);
-      padding: 1.25rem;
-      margin-bottom: 1.25rem; }
-      .path-local-importtosection .mform .grouped_settings.section_level::after {
-        display: block;
-        clear: both;
-        content: ""; }
-  .path-local-importtosection .mform .include_setting {
+    /* Use card styles but avoid extend because that brings in too much. */ 
+}
+.path-local-importtosection .mform .grouped_settings.section_level {
+    background-color: #fff;
+    border-radius: 0.25rem;
+    border: 1px solid rgba(0, 0, 0, 0.125);
+    padding: 1.25rem;
+    margin-bottom: 1.25rem; 
+}
+.path-local-importtosection .mform .grouped_settings.section_level::after {
+    display: block;
+    clear: both;
+    content: ""; 
+}
+.path-local-importtosection .mform .include_setting {
     width: 50%;
     display: inline-block;
     float: left;
-    padding: 0.3rem; }
-  .path-local-importtosection .mform .normal_setting {
+    padding: 0.3rem; 
+}
+.path-local-importtosection .mform .normal_setting {
     width: 50%;
     display: inline-block;
     float: left;
-    padding: 0.3rem; }
+    padding: 0.3rem; 
+}
 
 .path-local-importtosection {
-  /* Bold section labels */ }
-  .path-local-importtosection .section_level {
-    font-weight: bold; }
-  .path-local-importtosection .section_level .activity_level {
-    font-weight: normal; }
-  .path-local-importtosection .proceedbutton {
-    margin-left: auto; }
+    /* Bold section labels */ 
+}
+.path-local-importtosection .section_level {
+    font-weight: bold; 
+}
+.path-local-importtosection .section_level .activity_level {
+    font-weight: normal; 
+}
+.path-local-importtosection .proceedbutton {
+    margin-left: auto; 
+}
 
 /* Override the columns width to leave more room for the labels. */
 .path-local-importtosection .mform .root_setting,
 .path-local-importtosection .mform .grouped_settings {
-  /* Striped rows like a table */ }
-  .path-local-importtosection .mform .root_setting:nth-of-type(odd),
-  .path-local-importtosection .mform .grouped_settings:nth-of-type(odd) {
-    background-color: rgba(0, 0, 0, 0.05); }
-  .path-local-importtosection .mform .root_setting:nth-of-type(even),
-  .path-local-importtosection .mform .grouped_settings:nth-of-type(even) {
-    background-color: #fff; }
-  .path-local-importtosection .mform .root_setting .form-group, .path-local-importtosection .mform .root_setting .form-buttons,
-  .path-local-importtosection .mform .root_setting .path-admin .buttons, .path-admin .path-local-importtosection .mform .root_setting .buttons,
-  .path-local-importtosection .mform .root_setting .fp-content-center form + div, .fp-content-center .path-local-importtosection .mform .root_setting form + div,
-  .path-local-importtosection .mform .root_setting div.backup-section + form,
-  .path-local-importtosection .mform .grouped_settings .form-group,
-  .path-local-importtosection .mform .grouped_settings .form-buttons,
-  .path-local-importtosection .mform .grouped_settings .path-admin .buttons,
-  .path-admin .path-local-importtosection .mform .grouped_settings .buttons,
-  .path-local-importtosection .mform .grouped_settings .fp-content-center form + div,
-  .fp-content-center .path-local-importtosection .mform .grouped_settings form + div,
-  .path-local-importtosection .mform .grouped_settings div.backup-section + form {
-    /* These checkboxes with no label on the left. */ }
-    .path-local-importtosection .mform .root_setting .form-group .col-md-3.checkbox, .path-local-importtosection .mform .root_setting .form-buttons .col-md-3.checkbox, .path-local-importtosection .mform .root_setting .path-admin .buttons .col-md-3.checkbox, .path-admin .path-local-importtosection .mform .root_setting .buttons .col-md-3.checkbox, .path-local-importtosection .mform .root_setting .fp-content-center form + div .col-md-3.checkbox, .fp-content-center .path-local-importtosection .mform .root_setting form + div .col-md-3.checkbox, .path-local-importtosection .mform .root_setting div.backup-section + form .col-md-3.checkbox,
-    .path-local-importtosection .mform .grouped_settings .form-group .col-md-3.checkbox,
-    .path-local-importtosection .mform .grouped_settings .form-buttons .col-md-3.checkbox,
-    .path-local-importtosection .mform .grouped_settings .path-admin .buttons .col-md-3.checkbox,
-    .path-admin .path-local-importtosection .mform .grouped_settings .buttons .col-md-3.checkbox,
-    .path-local-importtosection .mform .grouped_settings .fp-content-center form + div .col-md-3.checkbox,
-    .fp-content-center .path-local-importtosection .mform .grouped_settings form + div .col-md-3.checkbox,
-    .path-local-importtosection .mform .grouped_settings div.backup-section + form .col-md-3.checkbox {
-      width: 0%; }
-    .path-local-importtosection .mform .root_setting .form-group .col-md-9.checkbox, .path-local-importtosection .mform .root_setting .form-buttons .col-md-9.checkbox, .path-local-importtosection .mform .root_setting .path-admin .buttons .col-md-9.checkbox, .path-admin .path-local-importtosection .mform .root_setting .buttons .col-md-9.checkbox, .path-local-importtosection .mform .root_setting .fp-content-center form + div .col-md-9.checkbox, .fp-content-center .path-local-importtosection .mform .root_setting form + div .col-md-9.checkbox, .path-local-importtosection .mform .root_setting div.backup-section + form .col-md-9.checkbox,
-    .path-local-importtosection .mform .grouped_settings .form-group .col-md-9.checkbox,
-    .path-local-importtosection .mform .grouped_settings .form-buttons .col-md-9.checkbox,
-    .path-local-importtosection .mform .grouped_settings .path-admin .buttons .col-md-9.checkbox,
-    .path-admin .path-local-importtosection .mform .grouped_settings .buttons .col-md-9.checkbox,
-    .path-local-importtosection .mform .grouped_settings .fp-content-center form + div .col-md-9.checkbox,
-    .fp-content-center .path-local-importtosection .mform .grouped_settings form + div .col-md-9.checkbox,
-    .path-local-importtosection .mform .grouped_settings div.backup-section + form .col-md-9.checkbox {
-      width: 100%;
-      left: 0; }
+    /* Striped rows like a table */ 
+}
+.path-local-importtosection .mform .root_setting:nth-of-type(odd),
+.path-local-importtosection .mform .grouped_settings:nth-of-type(odd) {
+    background-color: rgba(0, 0, 0, 0.05); 
+}
+.path-local-importtosection .mform .root_setting:nth-of-type(even),
+.path-local-importtosection .mform .grouped_settings:nth-of-type(even) {
+    background-color: #fff; 
+}
+.path-local-importtosection .mform .root_setting .form-group,
+.path-local-importtosection .mform .root_setting .form-buttons,
+.path-local-importtosection .mform .root_setting .path-admin .buttons,
+.path-admin .path-local-importtosection .mform .root_setting .buttons,
+.path-local-importtosection .mform .root_setting .fp-content-center form + div,
+.fp-content-center .path-local-importtosection .mform .root_setting form + div,
+.path-local-importtosection .mform .root_setting div.backup-section + form,
+.path-local-importtosection .mform .grouped_settings .form-group,
+.path-local-importtosection .mform .grouped_settings .form-buttons,
+.path-local-importtosection .mform .grouped_settings .path-admin .buttons,
+.path-admin .path-local-importtosection .mform .grouped_settings .buttons,
+.path-local-importtosection .mform .grouped_settings .fp-content-center form + div,
+.fp-content-center .path-local-importtosection .mform .grouped_settings form + div,
+.path-local-importtosection .mform .grouped_settings div.backup-section + form {
+    /* These checkboxes with no label on the left. */ 
+}
+.path-local-importtosection .mform .root_setting .form-group .col-md-3.checkbox,
+.path-local-importtosection .mform .root_setting .form-buttons .col-md-3.checkbox,
+.path-local-importtosection .mform .root_setting .path-admin .buttons .col-md-3.checkbox,
+.path-admin .path-local-importtosection .mform .root_setting .buttons .col-md-3.checkbox,
+.path-local-importtosection .mform .root_setting .fp-content-center form + div .col-md-3.checkbox,
+.fp-content-center .path-local-importtosection .mform .root_setting form + div .col-md-3.checkbox,
+.path-local-importtosection .mform .root_setting div.backup-section + form .col-md-3.checkbox,
+.path-local-importtosection .mform .grouped_settings .form-group .col-md-3.checkbox,
+.path-local-importtosection .mform .grouped_settings .form-buttons .col-md-3.checkbox,
+.path-local-importtosection .mform .grouped_settings .path-admin .buttons .col-md-3.checkbox,
+.path-admin .path-local-importtosection .mform .grouped_settings .buttons .col-md-3.checkbox,
+.path-local-importtosection .mform .grouped_settings .fp-content-center form + div .col-md-3.checkbox,
+.fp-content-center .path-local-importtosection .mform .grouped_settings form + div .col-md-3.checkbox,
+.path-local-importtosection .mform .grouped_settings div.backup-section + form .col-md-3.checkbox {
+    width: 0%; 
+}
+.path-local-importtosection .mform .root_setting .form-group .col-md-9.checkbox,
+.path-local-importtosection .mform .root_setting .form-buttons .col-md-9.checkbox,
+.path-local-importtosection .mform .root_setting .path-admin .buttons .col-md-9.checkbox,
+.path-admin .path-local-importtosection .mform .root_setting .buttons .col-md-9.checkbox,
+.path-local-importtosection .mform .root_setting .fp-content-center form + div .col-md-9.checkbox,
+.fp-content-center .path-local-importtosection .mform .root_setting form + div .col-md-9.checkbox,
+.path-local-importtosection .mform .root_setting div.backup-section + form .col-md-9.checkbox,
+.path-local-importtosection .mform .grouped_settings .form-group .col-md-9.checkbox,
+.path-local-importtosection .mform .grouped_settings .form-buttons .col-md-9.checkbox,
+.path-local-importtosection .mform .grouped_settings .path-admin .buttons .col-md-9.checkbox,
+.path-admin .path-local-importtosection .mform .grouped_settings .buttons .col-md-9.checkbox,
+.path-local-importtosection .mform .grouped_settings .fp-content-center form + div .col-md-9.checkbox,
+.fp-content-center .path-local-importtosection .mform .grouped_settings form + div .col-md-9.checkbox,
+.path-local-importtosection .mform .grouped_settings div.backup-section + form .col-md-9.checkbox {
+    width: 100%;
+    left: 0; 
+}
 
 /* Detail pair is (usually) some short label with a longer value */
 .path-local-importtosection .detail-pair .detail-pair-label {
-  width: 25%;
-  float: left;
-  clear: left; }
+    width: 25%;
+    float: left;
+    clear: left; 
+}
 
 .path-local-importtosection .detail-pair .detail-pair-value {
-  width: 75%;
-  float: left; }
+    width: 75%;
+    float: left; 
+}
 
 .path-local-importtosection .backup-restore .singlebutton {
-  float: right; }
+    float: right; 
+}
 
 /* Make these bits full width and work with the detail-pair */
 .path-local-importtosection .backup-section {
-  /* Fix for nested table headers */
-  /* Add card styles to backup sections */
-  background-color: #fff;
-  border-radius: 0.25rem;
-  border: 1px solid rgba(0, 0, 0, 0.125);
-  padding: 1.25rem;
-  margin-bottom: 1.25rem; }
-  .path-local-importtosection .backup-section .sub-header,
-  .path-local-importtosection .backup-section .backup-sub-section,
-  .path-local-importtosection .backup-section .singlebutton,
-  .path-local-importtosection .backup-section .header {
+    /* Fix for nested table headers */
+    /* Add card styles to backup sections */
+    background-color: #fff;
+    border-radius: 0.25rem;
+    border: 1px solid rgba(0, 0, 0, 0.125);
+    padding: 1.25rem;
+    margin-bottom: 1.25rem; 
+}
+.path-local-importtosection .backup-section .sub-header,
+.path-local-importtosection .backup-section .backup-sub-section,
+.path-local-importtosection .backup-section .singlebutton,
+.path-local-importtosection .backup-section .header {
     width: 100%;
     float: left;
-    clear: both; }
-  .path-local-importtosection .backup-section th.header {
+    clear: both; 
+}
+.path-local-importtosection .backup-section th.header {
     width: auto;
-    float: none; }
-  .path-local-importtosection .backup-section ::after {
+    float: none; 
+}
+.path-local-importtosection .backup-section ::after {
     content: "";
     display: table;
-    clear: both; }
-  .path-local-importtosection .backup-section::after {
+    clear: both; 
+}
+.path-local-importtosection .backup-section::after {
     display: block;
     clear: both;
-    content: ""; }
+    content: ""; 
+}
 
 .path-local-importtosection .notification.dependencies_enforced {
-  color: #d9534f;
-  font-weight: bold; }
+    color: #d9534f;
+    font-weight: bold; 
+}
 
 .path-local-importtosection .backup_progress {
-  margin-top: 1rem;
-  margin-bottom: 1rem; }
-  .path-local-importtosection .backup_progress .backup_stage.backup_stage_current {
+    margin-top: 1rem;
+    margin-bottom: 1rem; 
+}
+.path-local-importtosection .backup_progress .backup_stage.backup_stage_current {
     font-weight: bold;
-    color: inherit; }
+    color: inherit; 
+}
 
 .path-local-importtosection .backup_progress span.backup_stage.backup_stage_complete {
-  color: inherit; }
+    color: inherit; 
+}
 
 #page-backup-restore .filealiasesfailures {
-  background-color: #f7dddc; }
-  #page-backup-restore .filealiasesfailures .aliaseslist {
-    background-color: #fff; }
+    background-color: #f7dddc; 
+}
+#page-backup-restore .filealiasesfailures .aliaseslist {
+    background-color: #fff; 
+}
 
 .path-local-importtosection .wibbler {
-  width: 500px;
-  margin: 0 auto 10px;
-  border-bottom: 1px solid black;
-  border-right: 1px solid black;
-  border-left: 1px solid black;
-  position: relative;
-  min-height: 4px; }
-  .path-local-importtosection .wibbler .wibble {
+    width: 500px;
+    margin: 0 auto 10px;
+    border-bottom: 1px solid black;
+    border-right: 1px solid black;
+    border-left: 1px solid black;
+    position: relative;
+    min-height: 4px; 
+}
+.path-local-importtosection .wibbler .wibble {
     position: absolute;
     left: 0;
     right: 0;
     top: 0;
-    height: 4px; }
-  .path-local-importtosection .wibbler .state0 {
-    background: #eee; }
-  .path-local-importtosection .wibbler .state1 {
-    background: #ddd; }
-  .path-local-importtosection .wibbler .state2 {
-    background: #ccc; }
-  .path-local-importtosection .wibbler .state3 {
-    background: #bbb; }
-  .path-local-importtosection .wibbler .state4 {
-    background: #aaa; }
-  .path-local-importtosection .wibbler .state5 {
-    background: #999; }
-  .path-local-importtosection .wibbler .state6 {
-    background: #888; }
-  .path-local-importtosection .wibbler .state7 {
-    background: #777; }
-  .path-local-importtosection .wibbler .state8 {
-    background: #666; }
-  .path-local-importtosection .wibbler .state9 {
-    background: #555; }
-  .path-local-importtosection .wibbler .state10 {
-    background: #444; }
-  .path-local-importtosection .wibbler .state11 {
-    background: #333; }
-  .path-local-importtosection .wibbler .state12 {
-    background: #222; }
+    height: 4px; 
+}
+.path-local-importtosection .wibbler .state0 {
+    background: #eee; 
+}
+.path-local-importtosection .wibbler .state1 {
+    background: #ddd; 
+}
+.path-local-importtosection .wibbler .state2 {
+    background: #ccc; 
+}
+.path-local-importtosection .wibbler .state3 {
+    background: #bbb; 
+}
+.path-local-importtosection .wibbler .state4 {
+    background: #aaa; 
+}
+.path-local-importtosection .wibbler .state5 {
+    background: #999; 
+}
+.path-local-importtosection .wibbler .state6 {
+    background: #888; 
+}
+.path-local-importtosection .wibbler .state7 {
+    background: #777; 
+}
+.path-local-importtosection .wibbler .state8 {
+    background: #666; 
+}
+.path-local-importtosection .wibbler .state9 {
+    background: #555; 
+}
+.path-local-importtosection .wibbler .state10 {
+    background: #444; 
+}
+.path-local-importtosection .wibbler .state11 {
+    background: #333; 
+}
+.path-local-importtosection .wibbler .state12 {
+    background: #222; 
+}

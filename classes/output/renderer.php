@@ -16,7 +16,7 @@
 
 /**
  * Renderer for local_importtosection.
- * 
+ *
  * This file contains backup and restore output renderers
  *
  * @package   local_importtosection
@@ -51,7 +51,7 @@ class local_importtosection_core_backup_renderer extends core_backup_renderer {
 
     /**
      * Creates html-code for the section-selection-page.
-     * 
+     *
      * Adapted backup/util/ui/renderer.php -> import_course_selector to fit here.
      *
      * @param moodle_url $nexturl the url to open next

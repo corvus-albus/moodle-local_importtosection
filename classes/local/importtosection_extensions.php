@@ -16,7 +16,7 @@
 
 /**
  * Ui-class for local_importtosection.
- * 
+ *
  * This file contains extension of the import_ui classes that adds a methods
  * in order to customise the backup UI for the purposes of
  * import to a single section.
