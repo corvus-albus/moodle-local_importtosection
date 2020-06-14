@@ -26,6 +26,6 @@ defined('MOODLE_INTERNAL') || die();
 
 $plugin->component = 'local_importtosection';
 $plugin->maturity  = MATURITY_STABLE;
-$plugin->release   = 'v0.9.2';
+$plugin->release   = 'v0.9.2.1';
 $plugin->requires  = 2018120300;
-$plugin->version   = 2020061402;
+$plugin->version   = 2020061403;
