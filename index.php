@@ -1,5 +1,4 @@
 <?php
-
 // This file is part of Moodle - http://moodle.org/
 //
 // Moodle is free software: you can redistribute it and/or modify
@@ -16,6 +15,8 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
+ * Configuring and executing process for local_importtosection.
+ * 
  * This script is used to configure and execute the import proccessto a section.
  * It is based on the /backup/import.php
  *
@@ -27,7 +28,7 @@
 
 define('NO_OUTPUT_BUFFERING', true);
 
-// Require both the backup and restore libs
+// Require both the backup and restore libs.
 require_once(dirname(__FILE__) . '/../../config.php');
 require_once($CFG->dirroot . '/backup/util/includes/backup_includes.php');
 require_once($CFG->dirroot . '/backup/moodle2/backup_plan_builder.class.php');
@@ -37,70 +38,68 @@ require_once($CFG->dirroot . '/backup/util/ui/import_extensions.php');
 require_once($CFG->dirroot . '/local/importtosection/classes/output/renderer.php');
 require_once($CFG->dirroot . '/local/importtosection/classes/local/importtosection_extensions.php');
 
-// The courseid we are importing to
+// The courseid we are importing to.
 $courseid = required_param('id', PARAM_INT);
-// The id of the course we are importing FROM (will only be set if past first stage
+// The id of the course we are importing FROM (will only be set if past first stage.
 $importcourseid = optional_param('importid', false, PARAM_INT);
 // We just want to check if a search has been run. True if anything is there.
 $searchcourses = optional_param('searchcourses', false, PARAM_BOOL);
-// The target method for the restore (adding or deleting)
+// The target method for the restore (adding or deleting).
 $restoretarget = optional_param('target', backup::TARGET_CURRENT_ADDING, PARAM_INT);
-// The number of the target section
+// The number of the target section.
 $sectionnumber = optional_param('targetsection', false, PARAM_INT);
 
-// Load the course and context
-$course = $DB->get_record('course', array('id'=>$courseid), '*', MUST_EXIST);
+// Load the course and context.
+$course = $DB->get_record('course', array('id' => $courseid), '*', MUST_EXIST);
 $context = context_course::instance($courseid);
 
-// Must pass login
+// Must pass login.
 require_login($course);
-// Must hold restoretargetimport in the current course
+// Must hold restoretargetimport in the current course.
 require_capability('moodle/restore:restoretargetimport', $context);
 
-// Set up the page
+// Set up the page.
 $PAGE->set_title($course->shortname . ': ' . get_string('import'));
 $PAGE->set_heading($course->fullname);
-$PAGE->set_url(new moodle_url('/local/importtosection/index.php', array('id'=>$courseid)));
+$PAGE->set_url(new moodle_url('/local/importtosection/index.php', array('id' => $courseid)));
 $PAGE->set_context($context);
 $PAGE->set_pagelayout('incourse');
 
+// Prepare the backup renderer.
+$renderer = $PAGE->get_renderer('local_importtosection', 'core_backup');
 
-// Prepare the backup renderer
-$renderer = $PAGE->get_renderer('local_importtosection','core_backup');
-
-// Check if we already have a target section
+// Check if we already have a target section.
 if ($sectionnumber === false) {
-    $nexturl = new moodle_url('/local/importtosection/index.php',array('id' => $courseid));
+    $nexturl = new moodle_url('/local/importtosection/index.php', array('id' => $courseid));
 
-    // show the targetsection selector
+    // Display the targetsection selector.
     echo $OUTPUT->header();
-    echo $renderer->target_section_selector ($nexturl, $course);
+    echo $renderer->local_importtosection_target_section_selector($nexturl, $course);
     echo $OUTPUT->footer();
     die();
-
 }
 
-// Check if we already have a import course id
+// Check if we already have a import course id.
 if ($importcourseid === false || $searchcourses) {
-    // Obviously not... show the selector so one can be chosen
-    $url = new moodle_url('/local/importtosection/index.php', array('id'=>$courseid, 'targetsection' => $sectionnumber));
-    $search = new import_course_search(array('url'=>$url));
+    // Obviously not... show the selector so one can be chosen.
+    $url = new moodle_url('/local/importtosection/index.php', array('id' => $courseid, 'targetsection' => $sectionnumber));
+    $search = new import_course_search(array('url' => $url));
 
-    // show the course selector
+    // Display the course selector.
     echo $OUTPUT->header();
     echo $renderer->import_course_selector($url, $search);
     echo $OUTPUT->footer();
     die();
 }
 
-// Load the course +context to import from
-$importcourse = $DB->get_record('course', array('id'=>$importcourseid), '*', MUST_EXIST);
+// Load the course + context to import from.
+$importcourse = $DB->get_record('course', array('id' => $importcourseid), '*', MUST_EXIST);
 $importcontext = context_course::instance($importcourseid);
 
-// Make sure the user can backup from that course
+// Make sure the user can backup from that course.
 require_capability('moodle/backup:backuptargetimport', $importcontext);
 
-// Attempt to load the existing backup controller (backupid will be false if there isn't one)
+// Attempt to load the existing backup controller (backupid will be false if there isn't one).
 $backupid = optional_param('backup', false, PARAM_ALPHANUM);
 if (!($bc = backup_ui::load_controller($backupid))) {
     $bc = new backup_controller(backup::TYPE_1COURSE, $importcourse->id, backup::FORMAT_MOODLE,
@@ -109,7 +108,7 @@ if (!($bc = backup_ui::load_controller($backupid))) {
     $settings = $bc->get_plan()->get_settings();
 
     // For the initial stage we want to hide all locked settings and if there are
-    // no visible settings move to the next stage
+    // no visible settings move to the next stage.
     $visiblesettings = false;
     foreach ($settings as $setting) {
         if ($setting->get_status() !== backup_setting::NOT_LOCKED) {
@@ -121,17 +120,18 @@ if (!($bc = backup_ui::load_controller($backupid))) {
     import_ui::skip_current_stage(!$visiblesettings);
 }
 
-// Prepare the import UI
-$backup = new importtosection_ui($bc, array('importid'=>$importcourse->id, 'target'=>$restoretarget, 'targetsection' => $sectionnumber));
-// Process the current stage
+// Prepare the import UI.
+$backup = new local_importtosection_ui($bc, array('importid' => $importcourse->id,
+    'target' => $restoretarget, 'targetsection' => $sectionnumber));
+// Process the current stage.
 $backup->process();
 
-// If this is the confirmation stage remove the filename setting
+// If this is the confirmation stage remove the filename setting.
 if ($backup->get_stage() == backup_ui::STAGE_CONFIRMATION) {
     $backup->get_setting('filename')->set_visibility(backup_setting::HIDDEN);
 }
 
-// If it's the final stage process the import
+// If it's the final stage process the import.
 if ($backup->get_stage() == backup_ui::STAGE_FINAL) {
     echo $OUTPUT->header();
 
@@ -148,16 +148,18 @@ if ($backup->get_stage() == backup_ui::STAGE_FINAL) {
     $logger = new core_backup_html_logger($CFG->debugdeveloper ? backup::LOG_DEBUG : backup::LOG_INFO);
     $backup->get_controller()->add_logger($logger);
 
-    // First execute the backup
+    // First execute the backup.
     $backup->execute();
     $backup->destroy();
 
-    // rewrite backup to import only to target section. rewrite_backup_to_section returns true or an errostring.
-    if (is_string($backup->rewrite_backup_to_section (make_backup_temp_directory($backupid, false), $sectionnumber))) {
+    // Manipulate backup to import only to target section.
+    $tempdestination = make_backup_temp_directory($backupid, false);
+    $errorstring = $backup->local_importtosection_adapt_backup_to_section($tempdestination, $sectionnumber);
+    if (!empty($errorstring)) {
         // An error occurred. Terminate the import.
         fulldelete($tempdestination);
-        echo $renderer->precheck_notices($precheckresults);
-        echo $OUTPUT->continue_button(new moodle_url('/course/view.php', array('id'=>$course->id)));
+        echo $renderer->precheck_notices(array('errors' => $errorstring));
+        echo $OUTPUT->continue_button(new moodle_url('/course/view.php', array('id' => $course->id)));
         echo $OUTPUT->footer();
         die();
     }
@@ -169,10 +171,10 @@ if ($backup->get_stage() == backup_ui::STAGE_FINAL) {
 
     // Check whether the backup directory still exists. If missing, something
     // went really wrong in backup, throw error. Note that backup::MODE_IMPORT
-    // backups don't store resulting files ever
+    // backups don't store resulting files ever.
     $tempdestination = make_backup_temp_directory($backupid, false);
     if (!file_exists($tempdestination) || !is_dir($tempdestination)) {
-        print_error('unknownbackupexporterror'); // shouldn't happen ever
+        print_error('unknownbackupexporterror'); // Shouldn't happen ever.
     }
 
     // Prepare the restore controller. We don't need a UI here as we will just use what
@@ -187,13 +189,13 @@ if ($backup->get_stage() == backup_ui::STAGE_FINAL) {
     // Set logger for restore.
     $rc->add_logger($logger);
 
-    // Convert the backup if required.... it should NEVER happed
+    // Convert the backup if required.... it should NEVER happen.
     if ($rc->get_status() == backup::STATUS_REQUIRE_CONV) {
         $rc->convert();
     }
     // Mark the UI finished.
     $rc->finish_ui();
-    // Execute prechecks
+    // Execute prechecks.
     $warnings = false;
     if (!$rc->execute_precheck()) {
         $precheckresults = $rc->get_precheck_results();
@@ -202,7 +204,7 @@ if ($backup->get_stage() == backup_ui::STAGE_FINAL) {
                 fulldelete($tempdestination);
 
                 echo $renderer->precheck_notices($precheckresults);
-                echo $OUTPUT->continue_button(new moodle_url('/course/view.php', array('id'=>$course->id)));
+                echo $OUTPUT->continue_button(new moodle_url('/course/view.php', array('id' => $course->id)));
                 echo $OUTPUT->footer();
                 die();
             }
@@ -217,7 +219,7 @@ if ($backup->get_stage() == backup_ui::STAGE_FINAL) {
     // Execute the restore.
     $rc->execute_plan();
 
-    // Delete the temp directory now
+    // Delete the temp directory now.
     fulldelete($tempdestination);
 
     // End restore section of progress tracking (restore/precheck).
@@ -228,11 +230,11 @@ if ($backup->get_stage() == backup_ui::STAGE_FINAL) {
     echo html_writer::end_div();
     echo html_writer::script('document.getElementById("executionprogress").style.display = "none";');
 
-    // Display a notification and a continue button
+    // Display a notification and a continue button.
     if ($warnings) {
         echo $OUTPUT->box_start();
         echo $OUTPUT->notification(get_string('warning'), 'notifyproblem');
-        echo html_writer::start_tag('ul', array('class'=>'list'));
+        echo html_writer::start_tag('ul', array('class' => 'list'));
         foreach ($warnings as $warning) {
             echo html_writer::tag('li', $warning);
         }
@@ -240,7 +242,7 @@ if ($backup->get_stage() == backup_ui::STAGE_FINAL) {
         echo $OUTPUT->box_end();
     }
     echo $OUTPUT->notification(get_string('importsuccess', 'backup'), 'notifysuccess');
-    echo $OUTPUT->continue_button(new moodle_url('/course/view.php', array('id'=>$course->id)));
+    echo $OUTPUT->continue_button(new moodle_url('/course/view.php', array('id' => $course->id)));
 
     // Get and display log data if there was any.
     $loghtml = $logger->get_html();
@@ -253,11 +255,11 @@ if ($backup->get_stage() == backup_ui::STAGE_FINAL) {
     die();
 
 } else {
-    // Otherwise save the controller and progress
+    // Otherwise save the controller and progress.
     $backup->save_controller();
 }
 
-// Display the current stage
+// Display the current stage.
 echo $OUTPUT->header();
 if ($backup->enforce_changed_dependencies()) {
     debugging('Your settings have been altered due to unmet dependencies', DEBUG_DEVELOPER);

@@ -15,6 +15,8 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
+ * Renderer for local_importtosection.
+ * 
  * This file contains backup and restore output renderers
  *
  * @package   local_importtosection
@@ -47,19 +49,19 @@ require_once($CFG->dirroot . '/backup/util/ui/renderer.php');
  */
 class local_importtosection_core_backup_renderer extends core_backup_renderer {
 
-     /**
-     * creates html-code for the section-selection-page
-     * code basically from backup/util/ui/renderer.php -> import_course_selector
+    /**
+     * Creates html-code for the section-selection-page.
+     * 
+     * Adapted backup/util/ui/renderer.php -> import_course_selector to fit here.
      *
      * @param moodle_url $nexturl the url to open next
      * @param stdClass $course course object
      * @return bool|string true on success or errormessage on failure
      */
-
-    public function target_section_selector (moodle_url $nexturl, stdClass $course) {
+    public function local_importtosection_target_section_selector (moodle_url $nexturl, stdClass $course) {
 
         $sections = get_fast_modinfo($course)->get_section_info_all();
-        
+
         $html  = html_writer::start_tag('div', array('class' => 'import-course-selector backup-restore'));
         $html .= html_writer::start_tag('form', array('method' => 'post', 'action' => $nexturl->out_omit_querystring()));
         foreach ($nexturl->params() as $key => $value) {
@@ -67,8 +69,8 @@ class local_importtosection_core_backup_renderer extends core_backup_renderer {
         }
         $html .= html_writer::start_tag('div', array('class' => 'ics-existing-course backup-section'));
         $html .= $this->output->heading(get_string('selecttargetsection', 'local_importtosection'), 2, array('class' => 'header'));
- 
-        // adapted from backup/util/ui/renderer.php -> render_import_course_search
+
+        // Adapted from backup/util/ui/renderer.php -> render_import_course_search.
         $html .= html_writer::tag('div', get_string('numberweeks') . ' ' . count($sections), array('class' => 'ics-totalresults'));
         $html .= html_writer::start_tag('div', array('class' => 'ics-results'));
 
@@ -86,7 +88,7 @@ class local_importtosection_core_backup_renderer extends core_backup_renderer {
         }
         $html .= html_writer::table($table);
         $html .= html_writer::end_tag('div');
-        
+
         $attrs = array('type' => 'submit', 'value' => get_string('continue'), 'class' => 'btn btn-primary');
         $html .= html_writer::start_tag('div', array('class' => 'mt-3'));
         $html .= $this->backup_detail_pair('', html_writer::empty_tag('input', $attrs));
