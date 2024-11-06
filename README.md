@@ -1,3 +1,5 @@
+No longer mantained -I'm sorry. We use 'sharing cart' plugin at our instance now
+
 Moodle Import to Section
 =============================
 
