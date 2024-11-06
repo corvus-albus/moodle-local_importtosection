@@ -1,4 +1,4 @@
-No longer mantained -I'm sorry. We use 'sharing cart' plugin at our instance now
+No longer mantained - I'm sorry. We are using 'sharing cart' plugin at our instance
 
 Moodle Import to Section
 =============================
